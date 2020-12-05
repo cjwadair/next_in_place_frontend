@@ -1,0 +1,25 @@
+{
+  "name": "next_in_place_frontend",
+  "version": "0.1.0",
+  "description": "Front End Code for the Next In Place Gem. Supports in line editing for rails 5.2 and higher apps using Webpacker",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "test": "jasmine --config=./spec/support/jasmine.json",
+    "build": "webpack",
+    "dev-server": "webpack serve"
+  },
+  "keywords": [],
+  "author": "Chris Adair <cjwadair@gmail.com>",
+  "license": "Apache",
+  "devDependencies": {
+    "@babel/core": "7.12.9",
+    "@babel/preset-env": "7.12.7",
+    "@babel/register": "7.12.1",
+    "babel-loader": "8.2.2",
+    "jasmine": "3.6.3",
+    "jsdom": "16.4.0",
+    "webpack": "5.9.0",
+    "webpack-cli": "4.2.0",
+    "webpack-dev-server": "3.11.0"
+  }
+}
