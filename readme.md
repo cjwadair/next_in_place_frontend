@@ -1,8 +1,8 @@
 # next_in_place_frontend
 Front End for the next in place gem
 
-#Installation Instructions
+# Installation Instructions
 Coming Soon
 
-#Usage
+# Usage
 Coming Soon

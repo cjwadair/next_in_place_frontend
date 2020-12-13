@@ -5,8 +5,10 @@ const NextInPlace = {
     let selector = nipSelector ? nipSelector : 'next-in-place';
     document.addEventListener("click", function(event){
       if (event.target.classList.contains(selector)){
+
         let nip = new NextInPlaceEditor(event.target.closest('.next-in-place'));
 
+        // submit checkbox form directly - don't display form
         if(nip.formType === 'checkbox'){
           let current_value = nip.value;
           let new_value = nip.collection['false'];

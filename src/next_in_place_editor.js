@@ -7,6 +7,9 @@ export default class NextInPlaceEditor{
     this.attributeName = data.nipAttribute;
     this.objectName = data.nipObject;
     this.formType = data.nipType;
+    if(data.nipUrl){
+      this.url = data.nipUrl;
+    }
     if(data.nipHtmlAttrs){
       this.htmlAttrs = JSON.parse(data.nipHtmlAttrs);
     }
@@ -147,8 +150,14 @@ export default class NextInPlaceEditor{
   }
   pathName(){
     // TODO: add a url attribute to allow users to submit custom paths and use that in place of below when provided...
-    let pathElements = this.element.id.split('-');
-    return `/${pathElements[2]}s/${pathElements[1]}`
+    // console.log('path name is: ', document.location.pathname);
+
+    if(this.url){
+      return this.url
+    } else {
+      let pathElements = this.element.id.split('-');
+      return `/${pathElements[2]}s/${pathElements[1]}` //creates a RESTful request like /things/123
+    }
   }
   formatRequestData(new_value){
     // return `${this.objectName}[${this.attributeName}]=${new_value}`

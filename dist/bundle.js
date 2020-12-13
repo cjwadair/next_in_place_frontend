@@ -88,6 +88,10 @@ var NextInPlaceEditor = /*#__PURE__*/function () {
     this.objectName = data.nipObject;
     this.formType = data.nipType;
 
+    if (data.nipUrl) {
+      this.url = data.nipUrl;
+    }
+
     if (data.nipHtmlAttrs) {
       this.htmlAttrs = JSON.parse(data.nipHtmlAttrs);
     }
@@ -262,8 +266,13 @@ var NextInPlaceEditor = /*#__PURE__*/function () {
     key: "pathName",
     value: function pathName() {
       // TODO: add a url attribute to allow users to submit custom paths and use that in place of below when provided...
-      var pathElements = this.element.id.split('-');
-      return "/".concat(pathElements[2], "s/").concat(pathElements[1]);
+      // console.log('path name is: ', document.location.pathname);
+      if (this.url) {
+        return this.url;
+      } else {
+        var pathElements = this.element.id.split('-');
+        return "/".concat(pathElements[2], "s/").concat(pathElements[1]); //creates a RESTful request like /things/123
+      }
     }
   }, {
     key: "formatRequestData",

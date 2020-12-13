@@ -92,7 +92,7 @@ describe("NextInPlaceEditor", function() {
     });
   });
 
-  describe('pathName and formatRequestData methods', () => {
+  describe('pathName and formatRequestData methods without a url provided', () => {
 
     let result;
 
@@ -118,6 +118,33 @@ describe("NextInPlaceEditor", function() {
 
     it('returns correctly formatted request data string', () => {
       expect(result.formatRequestData('202')).toBe('{"product":{"sku":"202"}}')
+    })
+
+  });
+
+  describe('pathName with url provided', () => {
+
+    let result;
+
+    beforeAll(() => {
+      let element = document.createElement('span');
+      setAttributes(element, {
+        'id': 'nip-1-product',
+        'class':'next-in-place',
+        'data-nip-attribute': 'sku',
+        'data-nip-type': 'input',
+        'data-nip-original-value': '999',
+        'data-nip-value': '999',
+        'data-nip-object': 'product',
+        'data-nip-collection': '{"beer":"beer", "wine":"wine"}',
+        'data-nip-html-attrs': '{"rows":"5", "cols":"10"}',
+        'data-nip-url': '/not/standard/path/47'
+      });
+      result = new NextInPlaceEditor(element);
+    });
+
+    it('returns correctly formatted path name when url parameter not provided', () => {
+      expect(result.pathName()).toBe('/not/standard/path/47');
     })
 
   });
@@ -230,11 +257,11 @@ describe("NextInPlaceEditor", function() {
     });
 
     xit("responds correctly on success callback", function() {
-      // TODO: FIND A WAY TO MOCK THE AJAX CALL AND ADD TEST
+      // TODO: MOCK THE AJAX CALL AND ADD TEST
     });
 
     xit("responds correctly on error callback", function() {
-      // TODO: FIND A WAY TO MOCK THE AJAX CALL AND ADD TEST
+      // TODO: MOCK THE AJAX CALL AND ADD TEST
     });
 
   });
